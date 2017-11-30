@@ -1,0 +1,6 @@
+@mixin box-shadow($val1,$val2){
+  box-shadow: 0 $val1 $val2 rgba(34, 25, 25, 0.4);
+  -moz-box-shadow: 0 $val1 $val2 rgba(34,25,25,0.4);
+  -webkit-box-shadow: 0 $val1 $val2 rgba(34, 25, 25, 0.4);
+}
+

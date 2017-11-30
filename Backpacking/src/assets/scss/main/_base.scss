@@ -1,0 +1,50 @@
+body{
+  color: #778899;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1,h2,h3,h4,h5{
+  margin: 0;
+}
+button{
+  background: none;
+}
+ul{
+  list-style-type: none;
+  padding: 0;
+}
+
+.row:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+a{
+  text-decoration: none;
+  color: #778899;
+  &hover{
+    cursor: pointer;
+  }
+}
+
+.to-the-right{
+  float: right;
+}
+
+.to-the-left{
+  float: left;
+}
+
+.detail-page, .search-box, .register, .login, .navbar-box{
+  @include box-shadow(0px,5px);
+}
+
+.left{
+  left: 0;
+}
+
+.right{
+  right: 0;
+}
