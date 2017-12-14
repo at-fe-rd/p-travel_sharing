@@ -10,18 +10,26 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import './assets/scss/main.scss'
 import Gallery from './components/ComponentPlugin/GalleryPlugin'
 import store from './store/store'
+import 'cropperjs/dist/cropper.css'
 
 Vue.use(Vuex)
 Vue.use(router)
 Vue.use(Gallery)
 Vue.use(VueResource)
 Vue.use(GlobalComponents)
+Vue.http.options.root = process.env.SERVER_IP
+
+Vue.http.headers.common['Access-Token'] = localStorage.getItem('ACCESS_TOKEN')
+Vue.http.headers.common['Uid'] = localStorage.getItem('UID')
+Vue.http.headers.common['Provider'] = localStorage.getItem('PROVIDER')
+
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyDBP7bsS6gD5Pe8ZS9esToRwiG4THL-FRQ',
     v: '3.26'
   }
 })
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -1,17 +1,17 @@
 <template>
-  <div v-if="place && place.detail">
-    <div class="detail-page" v-if="place.detail.length >0">
+  <div v-if="location && location.place">
+    <div class="detail-page">
       <img class="img-box" src="http://colorfully.eu/wp-content/uploads/2012/10/empty-road-highway-with-fog-facebook-cover.jpg" alt="cover-place">
       <div class="detail-box">
         <div class="info-place">
-          <h2>{{place.detail[0].name_place}}</h2>
+          <h2>{{location.place.name_place}}</h2>
           <span>4.5</span>•
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>•
-          <span> {{place.detail[0].people_rating}} reviews</span>
+          <span> {{location.place.people_rating}} reviews</span>
         </div>
         <button class="direction">
           <i class="fa fa-arrow-circle-right"></i>
@@ -41,7 +41,7 @@
         <ul>
           <li>
             <i class="fa fa-location-arrow"></i>
-            <span>{{place.name_palce}}</span>
+            <span>{{location.place.name_palce}}</span>
           </li>
           <li>
             <i class="fa fa-phone"></i>
@@ -53,11 +53,11 @@
           </li>
           <li>
             <i class="fa fa-road"></i>
-            <span>{{place.detail[0].direction}}</span>
+            <span>{{location.place.direction}}</span>
           </li>
           <li>
             <i class="fa fa-globe"></i>
-            <span>{{place.lng}} - {{place.lat}}</span>
+            <span>{{location.lng}} - {{location.lat}}</span>
           </li>
           <li>
             <i class="fa fa-exclamation"></i>
@@ -113,7 +113,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      place: types.PLACE
+      location: types.PLACE
     })
   }
 }

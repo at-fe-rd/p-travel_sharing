@@ -1,9 +1,9 @@
 <template>
   <div class="app">
-    <loader-circle :class="{'loader-center': true, 'is-not-loader': isNotLoader }"></loader-circle>
     <navbar class="navbar"></navbar>
+    <noti></noti>
     <div class="content">
-      <transition name="fade">
+      <transition name="slide-fade">
         <router-view/>
       </transition>
     </div>
@@ -12,8 +12,10 @@
 
 <script>
 import GoogleMap from './components/GoogleMap'
-import { mapGetters } from 'vuex'
 import * as types from './store/types'
+import {mapActions, mapGetters} from 'vuex'
+import {loadFbSdk, getFbLoginStatus} from './helper/authFacebook.js'
+
 export default {
   components: {
     GoogleMap
@@ -21,6 +23,31 @@ export default {
   data () {
     return {
     }
+  },
+  mounted () {
+    const provider = localStorage.getItem('PROVIDER')
+    if (provider === 'fb') {
+      loadFbSdk()
+      .then(getFbLoginStatus)
+      .then(response => {
+        if (response.status === 'connected') {
+          this.setConnected({status: true, provider: 'fb'})
+          this.getFacebookUser(response)
+        } else {
+          this.setConnected({status: false})
+        }
+      })
+    }
+    else if ( provider ==='email') {
+       this.checkLogin()
+    }
+  },
+  methods: {
+    ...mapActions({
+      checkLogin: types.CHECK_LOGIN,
+      setConnected: types.SET_CONNECTION,
+      getFacebookUser: types.GET_FACEBOOK_USER
+    })
   },
   computed: {
     ...mapGetters({
@@ -42,27 +69,27 @@ export default {
   position: absolute;
   z-index: 5;
 }
-.content{
-  padding-top: 9vh;
-}
-.app{
-  min-width: 500px;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-}
+
+
 .gmap-box{
   width: 100%; 
   height: 30vh;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
+.slide-fade-enter-active {
+  transition: all .6s ease;
 }
-.fade-enter, .fade-leave-to {
-  opacity: 0
+
+.slide-fade-leave-active {
+  transition: all .1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter {
+  transform: translateY(-2000px);
+  opacity: 0;
 }
 h4{
   margin: 5px;
 }
+
 </style>

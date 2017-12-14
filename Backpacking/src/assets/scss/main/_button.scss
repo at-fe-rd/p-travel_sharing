@@ -2,4 +2,39 @@
   border-radius: 10px;
   color: white;
   margin: 0 5px;
+  padding: 10px 20px;
+  outline: 0;
+}
+.btn-normal {
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+.btn-no-border{
+  border: 0;
+  font-size: 15px;
+}
+
+.btn-blue{
+  background-color:#5bc0de;
+  color: white;
+}
+
+.btn-black{
+  background-color:black;
+  color: white;
+}
+
+.btn-green{
+  background-color:#9BD770;
+}
+
+.btn-red {
+  background-color:#F08080;
+}
+.btn-facebook {
+  background-color: #4267b2;
+  color: white;
+}
+.btn-light-grey {
+  background-color: rgba(0,0,0,0.05);
 }

@@ -44,7 +44,7 @@ module.exports.createPlace = function(newPlace, callback){
   newPlace.save(callback);
 }
 
-// module.exports.getPlaceDetail = function({params}, callback){
-//   var query = {location_id: params.id};
-//   Place.findOne(query, callback);
-// }
+module.exports.getPlaceDetail = function(id, callback){
+  var query = {location_id: id};
+  Place.findOne(query, callback);
+}

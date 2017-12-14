@@ -13,6 +13,30 @@ var LocationSchema = new mongoose.Schema({
   },
   type_id: {
     type: Number
+  },
+  place: {
+    name_place: {
+      type: String,
+      index: true
+    },
+    address: {
+      type: String
+    },
+    detail: {
+      type: String
+    },
+    average_rating: {
+      type: Number
+    },
+    direction: {
+      type: String
+    },
+    people_rating: {
+      type: Number
+    },
+    warning: {
+      type: Number
+    }
   }
 })
 
@@ -22,19 +46,21 @@ module.exports.createLocation = function(newLocation, callback){
   newLocation.save(callback);
 }
 
-module.exports.getLocationDetail = function({params}, callback){
-  db.collection('locations').aggregate([
-    {
-      $lookup:
-        {
-          from: 'places',
-          localField: '_id',
-          foreignField: 'location_id',
-          as: 'detail'
-        }
-    },
-    { $match : { _id : Number(params.id) } }
-  ], callback);
+module.exports.getLocationDetail = function(id, callback){
+  // db.collection('locations').aggregate([
+  //   {
+  //     $lookup:
+  //       {
+  //         from: 'places',
+  //         localField: '_id',
+  //         foreignField: 'location_id',
+  //         as: 'detail'
+  //       }
+  //   },
+  //   { $match : { _id : Number(id) } }
+  // ], callback);
+  var query = {_id: id};
+  Location.findOne(query, callback);
 }
 
 module.exports.getAllLocationsInArea= function({params}, callback) {
@@ -42,11 +68,10 @@ module.exports.getAllLocationsInArea= function({params}, callback) {
   let east = Number(params.circle.east);
   let north = Number(params.circle.north);
   let south = Number(params.circle.south);
-  
   var query = { lng: {$gt: west, $lt: east }, 
                 lat: {$gt: south, $lt: north}
               };
-  Location.find(query, function (err, result){
+  Location.find(query, {lng: 1, lat: 1, type_id: 1}, function (err, result){
     callback(null, isInCircle(params.local,result,params.circle.east-params.local.lng));
   });
 }

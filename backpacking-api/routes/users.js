@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var UserValidation = require('../validation/UserValidation'),
+    UserSchema = require('../models/user'),
+    UsersController = require('../controller/UsersController')
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', function(req, res, next){
+    console.log(process.env.HOST);
 });
+
+router.post('/', UserValidation.validate, UsersController.create);
 
 module.exports = router;

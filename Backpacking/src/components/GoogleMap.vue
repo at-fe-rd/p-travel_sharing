@@ -1,5 +1,6 @@
 <template>
   <div class="gmap">
+    <loader-circle :class="{'loader-center': true, 'is-not-loader': isNotLoader }"></loader-circle>
     <gmap-map
       class="gmap-box"
       :center="center"

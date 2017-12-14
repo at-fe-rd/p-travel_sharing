@@ -19,7 +19,7 @@ const mutations = {
 
 const actions = {
   [types.FETCH_LOCATIONS]: ({commit}, payload) => {
-    Vue.http.get('http://localhost:3000/locations', {params: payload})
+    Vue.http.get('locations', {params: payload})
     .then(response => {
       commit(types.MUTATE_FETCH_LOCATIONS, response.body.locations)
     })

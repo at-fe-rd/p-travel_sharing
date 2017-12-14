@@ -13,13 +13,13 @@ const getters = {
 
 const mutations = {
   [types.MUTATE_FETCH_PLACE]: (state, payload) => {
-    state.place = payload[0]
+    state.place = payload
   }
 }
 
 const actions = {
   [types.FETCH_PLACE]: ({commit}, payload) => {
-    Vue.http.get('http://localhost:3000/locations/place', {params: payload})
+    Vue.http.get(`http://localhost:3000/places/${payload.id}`, {id: payload.id})
     .then(response => {
       commit(types.MUTATE_FETCH_PLACE, response.body.place)
     })

@@ -13,35 +13,86 @@
     </div>
     <div class="menu">
       <ul class="menu-list">
-        <router-link :to="{}" tag="a">
+        <router-link :to="'/news-feed'" tag="a">
           <li class="item"><i class="fa fa-newspaper-o"></i> NewsFeed</li>
         </router-link>
-        <router-link :to="{}" tag="a">
+        <router-link :to="'/near-me'" tag="a">
           <li class="item"><i class="fa fa-superpowers"></i> Near me</li>
         </router-link>
-        <router-link :to="{}" tag="a">
+        <router-link :to="'/popular'" tag="a">
           <li class="item"><i class="fa fa-area-chart"></i> Popular</li>
         </router-link>
-        <router-link :to="{}" tag="a">
+        <router-link :to="'/suggest'" tag="a">
           <li class="item"><i class="fa fa-lightbulb-o"></i> Suggestion</li>
         </router-link>
-        <router-link :to="{}" tag="a">
-          <li class="item btn register to-the-right"><i class="fa fa-user-plus"></i> Register</li>
-        </router-link>
-        <router-link :to="{}" tag="a">
-          <li class="item btn login to-the-right"><i class="fa fa-sign-in"></i> Login</li>
-        </router-link>
+        <div v-if="!currentUser" class="to-the-right">
+          <router-link :to="'/auth/signup'" tag="a">
+            <li class="item btn register"><i class="fa fa-user-plus"></i> Register</li>
+          </router-link>
+          <router-link :to="'/auth/login'" tag="a">
+            <li class="item btn login"><i class="fa fa-sign-in"></i> Login</li>
+          </router-link>
+        </div>
+        <div v-if="currentUser" class="to-the-right">
+          <drop-down class="item" :title="currentUser.name" :image="currentUser.avatar" icon="fa-caret-down">
+            <router-link :to="'/auth/login'" tag="a">
+              <li>Information</li>
+            </router-link>
+            <router-link :to="'/auth/login'" tag="a">
+              <li>Check-in</li>
+            </router-link>
+            <router-link :to="'/auth/login'" tag="a">
+              <li>Settings</li>
+            </router-link>
+            <hr class="small">
+            <a @click="logout">
+              <li>Logout</li>
+            </a>
+          </drop-down>
+        </div>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapActions, mapGetters} from 'vuex'
+  import * as types from '../../store/types'
+  import {fbLogout} from '../../helper/authFacebook.js'
+
   export default{
+    methods: {
+      ...mapActions({
+        setConnected: types.SET_CONNECTION,
+        setCurrentUser: types.SET_CURRENT_USER,
+        logoutEmail: types.LOG_OUT
+      }),
+      logout () {
+        const provider = localStorage.getItem('PROVIDER')
+        if ( provider === 'fb') {
+          fbLogout()
+          .then(response => {
+            this.setConnected(false)
+            this.setCurrentUser(null)
+          })
+        } else if (provider === 'email') {
+          this.logoutEmail()
+        }
+      }
+    },
+    computed: {
+      ...mapGetters({
+        currentUser: types.CURRENT_USER,
+        connected: types.CONNECTED
+      })
+    }
   }
 </script>
 
 <style lang="scss" scoped>
+.to-the-right{
+  width: 15em;
+}
 
 .logo{
   float: left;
