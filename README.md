@@ -19,6 +19,7 @@ npm install
 npm start
 
 ```
+Setup in http://localhost:8080
 
 To run Nodejs: 
 
@@ -27,6 +28,16 @@ cd backpacking-api
 npm install
 npm start
 ```
+Setup in http://localhost:3000
+
+To check database in mongodb
+
+```
+$ mongo
+> use backpacking-api
+> db.users.find() -> see the list of users
+```
+
 
 
 
