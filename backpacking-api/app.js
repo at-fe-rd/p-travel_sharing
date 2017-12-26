@@ -31,6 +31,9 @@ var locations = require('./routes/locations');
 var posts = require('./routes/posts');
 var users = require('./routes/users');
 var sessions = require('./routes/sessions');
+var pictures = require('./routes/pictures');
+var comments = require('./routes/comments');
+var relationship = require('./routes/relationship');
 // app.use('/contact', contact);
 
 //app controller
@@ -99,7 +102,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Accept");
  
-  res.header("Access-Control-Expose-Headers", "Access-Token, Uid, Provider");
+  res.header("Access-Control-Expose-Headers", "access-token, uid, provider");
   // res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
   // res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   // res.header('Access-Control-Allow-Headers', 'Asd');
@@ -109,12 +112,15 @@ app.use(function(req, res, next) {
 
 //use routes
 app.use('/', index);
+app.use('/pictures', pictures);
 app.use('/places', places);
 app.use('/locations', locations);
 app.use('/posts', posts);
 app.use('/users', users);
 app.use('/sessions', sessions);
 app.use('/auth', auth);
+app.use('/comments', comments);
+app.use('/relationship', relationship);
 // app.use('/contact', contact);
 
 app.use(flash());

@@ -12,9 +12,9 @@ exports.create = function(req, res, next) {
         if(isMatch) {
           Auth.createAccessToken(auth, function(err, authwAccessToken){
             res.set({
-              'Access-Token': authwAccessToken.access_token,
-              'Uid': authwAccessToken.uid,
-              'Provider': authwAccessToken.provider
+              'access-token': authwAccessToken.access_token,
+              'uid': authwAccessToken.uid,
+              'provider': authwAccessToken.provider
             });
             User.findOne({_id: authwAccessToken.user_id},{name: 1, avatar: 1}, function(err, person) {
               var user = new UserSerialized(person.name, person.avatar, auth.provider);
@@ -33,11 +33,11 @@ exports.show = function(req, res, next) {
   user = res.locals.user;
   header = res.locals.header;
   res.set({
-   'Access-Token': header.token,
-   'Uid': header.uid,
-   'Provider': user.provider
+   'access-token': header.token,
+   'uid': header.uid,
+   'provider': user.provider
   });
-  res.send({
+  res.status(200).send({
     user
   })
 }

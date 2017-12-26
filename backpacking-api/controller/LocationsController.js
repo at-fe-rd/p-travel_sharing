@@ -31,7 +31,6 @@ exports.create = function(req, res, next) {
     });
     Location.createLocation(newLocation, function (err, location){
       if(err) throw err;
-      console.log(location);
     });
   })
 }

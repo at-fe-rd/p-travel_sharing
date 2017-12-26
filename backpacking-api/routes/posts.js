@@ -19,6 +19,10 @@ var upload = multer({ storage: storage });
 
 router.get('/', PostsController.index);
 
+router.get('/:id', PostsController.show);
+
 router.post('/', AppController.authorize, upload.any(), PostsController.create);
+
+router.post('/like', AppController.authorize, PostsController.like);
 
 module.exports = router;
