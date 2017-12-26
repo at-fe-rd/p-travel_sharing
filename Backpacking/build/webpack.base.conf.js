@@ -82,6 +82,11 @@ module.exports = {
       {
           test: /\.s[a|c]ss$/,
           loader: 'style!css!sass'
+      },
+      { 
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /node_modules(?!\/(vue-tables-2|vue-pagination-2))/
       }
     ]
   }

@@ -1,0 +1,77 @@
+.hidden{
+  display: none;
+}
+.container-crop {
+  max-width: 640px;
+  margin: 6rem auto;
+  .img-box{
+    height: 60vh;
+  }
+  div{
+    text-align: center;
+    img {
+      max-height: 100%;
+    }
+    #image-preview{
+      position: absolute;
+      top: 0; 
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+.action-img{
+  text-align: center;
+  padding-top: 10px;
+  background: white;
+  i{
+    padding: 5px;
+    color: black;
+  }
+}
+.action{
+  padding: 10px 0;
+  background: white;
+  border-radius: 5px;
+  i{
+    vertical-align: middle;
+    opacity: 0.7;
+  }
+  a{
+    margin-right: 20px;
+  }
+  .btn-black{
+    margin-left: 20px;
+  }
+}
+button{
+  outline: 0;
+}
+
+.cropper-view-box{
+  outline: 5px solid white !important;
+}
+.cropper-point{
+  border-radius: 50%;
+  background-color: white !important;
+  height: 10px !important;
+  width: 10px !important;
+}
+.point-n, .point-s{
+  margin-left: -5px !important;
+}
+.point-n, .point-nw, .point-ne {
+  top: -7px !important;
+}
+.point-s, .point-sw, .point-se{
+  bottom: -7px !important;
+}
+.point-nw, .point-sw, .point-w{
+  left: -7px !important;
+}
+.point-w, .point-e{
+  margin-top: -5px !important;
+}
+.point-ne, .point-se, .point-e {
+  right: -7px !important;
+}

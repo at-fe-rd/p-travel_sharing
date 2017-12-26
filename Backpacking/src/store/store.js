@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import navigator from './modules/navigator'
 import newsFeed from './modules/newsFeed'
 import locationFinder from './modules/locationFinder'
+import postActions from './modules/postActions'
 import placeInfo from './modules/placeInfo'
 import auth from './modules/auth'
 import actions from './actions'
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     navigator,
     locationFinder,
     placeInfo,
-    newsFeed
+    newsFeed,
+    postActions
   }
 })

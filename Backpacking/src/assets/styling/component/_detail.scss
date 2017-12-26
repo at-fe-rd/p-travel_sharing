@@ -1,0 +1,106 @@
+.main-detail-page {
+  right: 0;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 400px;
+  height: 90vh;
+}
+
+.close-btn {
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.detail-box {
+  overflow: hidden;
+  background-color: $ivory;
+  padding: 20px 20px;
+}
+
+.detail-page {
+  width: 400px;
+  height: 90vh;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: scroll;
+}
+
+.info-place {
+  float: left;
+}
+
+.img-box {
+  height: 170px;
+  width: 100%;
+  position: relative;
+}
+
+.direction {
+  float: right;
+  background-color: none;
+  border: 0;
+}
+
+.action-item {
+  float: left;
+  display: inline-block;
+  width: calc(100%/4);
+  text-align: center;
+  i {
+    font-size: 40px;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+.more-info {
+  padding: 10px 20px;
+  li {
+    margin-bottom: 10px;
+    i {
+      width: 30px;
+      text-align: center;
+      padding-right: 10px;
+    }
+  }
+}
+
+.small-gallery {
+  position: relative;
+  height: 80px;
+  ul  {
+    height: 100%;
+  }
+  .gallery-item {
+    width: calc(100%/4);
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    img {
+      max-height: 100%;
+      padding: 0 2px;
+    }
+  }
+}
+
+.cover {
+  vertical-align: middle;
+  color:#fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 100px;
+  top:0; 
+  left:0;
+  background:rgba(0,0,0,0.6);
+  opacity:0;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  &:hover  {
+    opacity:1;
+  }
+}

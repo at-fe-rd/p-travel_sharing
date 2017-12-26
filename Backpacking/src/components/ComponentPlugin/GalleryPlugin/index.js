@@ -1,4 +1,4 @@
-import Gallery from './Gallery.vue'
+import Gallery from './gallery.vue'
 
 const GalleryPlugin = {
   install (Vue) {

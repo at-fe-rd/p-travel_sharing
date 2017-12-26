@@ -1,0 +1,27 @@
+{ 
+  "actions": {
+    "close": "close",
+    "text": "text",
+    "text_box": {
+      "write_status": "write your status",
+      "post": "post"
+    },
+    "check_in_box": {
+      "search_location": "search locations",
+      "name": "name",
+      "type": "type",
+      "checkin": "check-in"
+    },
+    "filter_box": {
+      "filter": "filter",
+      "post": "post"
+    },
+    "photo": "photo",
+    "checkin": "check-in",
+    "video": "video",
+    "filter": "filter"
+  },
+  "news": {
+    "comments": "comment(s)"
+  }
+}

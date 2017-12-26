@@ -2,35 +2,32 @@ import * as types from '../types'
 import Vue from 'vue'
 
 const state = {
-  status: ''
+  status: '',
+  posts: []
 }
 
 const getters = {
   [types.GET_STATUS]: state => {
     return state.status
+  },
+  [types.POSTS]: state => {
+    return state.posts
   }
 }
 
 const mutations = {
-  [types.MUTATE_CREATE_POST]: (state, payload) => {
-    console.log(payload)
+  [types.MUTATE_GET_ALL_POSTS]: (state, payload) => {
+    state.posts = payload.posts
   }
 }
 
 const actions = {
-  [types.CREATE_POST]: ({commit}, payload) => {
-    const formData = new FormData()
-    formData.append('file', payload.img)
-    formData.append('content', payload.content)
-    Vue.http.post('posts', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
+  [types.GET_ALL_POSTS]: ({commit}, payload) => {
+    Vue.http.get('posts')
     .then(response => {
-      console.log(response)
-    }, function (error) {
-      console.log(error)
+      commit(types.MUTATE_GET_ALL_POSTS, response.body)
+    }, function (err) {
+      console.log(err)
     })
   }
 }

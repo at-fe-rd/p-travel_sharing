@@ -26,23 +26,3 @@
     }
   }
 </script>
-<style lang="scss" scoped>
-@import '../../assets/scss/main/_variables.scss';
-.noti{
-  color: white;
-  position: absolute;
-  top: 4em;
-  left: 0;
-}
-.red{
-  background-color: $noti-red-color;
-}
-.green{
-  background-color: $noti-green-color;
-}
-.yellow{
-  background-color: $noti-yellow-color;
-  color: black;
-}
-</style>
-

@@ -1,0 +1,38 @@
+.fa-arrow-circle-right, .fa-times-circle-o{
+  font-size: 60px;
+  color: $main-green-color;
+}
+.fa-times-circle-o{
+  color: $light-coral;
+}
+.actions-item {
+  .fa {
+    font-size: 2rem;
+    display: block;
+    padding-bottom: 0.2rem;
+  }
+  .fa-comments {
+    color: grey;
+  }
+  .fa-camera {
+    color: #d95e40;
+  }
+  .fa-compass {
+    color: #56bc8a;
+  }
+  .fa-sort {
+    color: #529ecc;
+  }
+}
+.small-actions {
+  .fa {
+    display: inline-block;
+    font-size: 1rem;
+    padding: 0 0.4rem;
+  }
+}
+
+.fa-heart {
+  padding-left: 0.5rem;
+  color: $heart-color;
+}

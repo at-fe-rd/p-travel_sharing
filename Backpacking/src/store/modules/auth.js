@@ -33,6 +33,15 @@ const mutations = {
     localStorage.setItem('ACCESS_TOKEN', payload.token)
     localStorage.setItem('UID', payload.uid)
     localStorage.setItem('PROVIDER', payload.provider)
+    Vue.http.headers.common['Access-Token'] = localStorage.getItem('ACCESS_TOKEN')
+    Vue.http.headers.common['Uid'] = localStorage.getItem('UID')
+    Vue.http.headers.common['Provider'] = localStorage.getItem('PROVIDER')
+  },
+  [types.MUTATE_DELETE_CURRENT_USER]: (state, payload) => {
+    state.currentUser = null
+    localStorage.removeItem('ACCESS_TOKEN')
+    localStorage.removeItem('UID')
+    localStorage.removeItem('PROVIDER')
   }
 }
 
@@ -46,8 +55,10 @@ const actions = {
   [types.CHECK_LOGIN]: ({commit}, payload) => {
     Vue.http.get('sessions/show')
     .then(response => {
-      console.log(response.headers)
       commit(types.MUTATE_SET_CURRENT_USER, {token: response.headers.map['access-token'][0], uid: response.headers.map['uid'][0], provider: response.headers.map['provider'][0], user: response.body.user})
+    })
+    .catch(function (e) {
+      commit(types.MUTATE_DELETE_CURRENT_USER, payload)
     })
   },
   [types.SET_CURRENT_USER]: ({commit}, payload) => {
@@ -56,8 +67,8 @@ const actions = {
   [types.LOG_IN]: ({commit}, payload) => {
     Vue.http.post('sessions', payload)
     .then(response => {
-      commit(types.MUTATE_SET_CONNECTION, {status: true, provider: 'email'})
       commit(types.MUTATE_SET_CURRENT_USER, {token: response.headers.map['access-token'][0], uid: response.headers.map['uid'][0], provider: response.headers.map['provider'][0], user: response.body.user})
+      commit(types.MUTATE_SET_CONNECTION, {status: true, provider: 'email'})
     })
     .catch(function (e) {
       if (e.status === 401) {
@@ -66,9 +77,10 @@ const actions = {
     })
   },
   [types.LOG_OUT]: ({commit}, payload) => {
+    localStorage.clear()
     Vue.http.delete('sessions/destroy')
     .then(response => {
-      commit(types.MUTATE_SET_CURRENT_USER, {user: {}, uid: '', access_token: '', provider: ''})
+      commit(types.MUTATE_DELETE_CURRENT_USER, payload)
     })
   },
   [types.SET_CONNECTION]: ({commit}, payload) => {

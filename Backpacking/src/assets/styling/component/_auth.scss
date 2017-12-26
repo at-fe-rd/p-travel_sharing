@@ -1,0 +1,53 @@
+.social-login{
+  margin: 20px 0;
+}
+.circle {
+  margin: 0 20px;
+}
+.auth-modal {
+  height: 90vh;
+  .container-crop {
+    border-radius: 5px;
+    background-color: white;
+    max-width: 30rem;
+    text-align: center;
+    margin: 4em auto;
+    padding: 1em 0;
+    .input-light-grey{
+      margin: 1em 4em;
+      text-align: left;
+      input{
+        width: calc(100% - 50px);
+      }
+    }
+  }
+}
+
+.other-actions {
+  margin: 20px 0;
+}
+
+.gender {
+  padding-bottom: 20px;
+  input {
+    width: auto;
+  }
+}
+input[type="radio"] {
+  margin-left: 10px;
+}
+.social-login {
+  margin: 20px 0;
+}
+.circle {
+  margin: 0 20px;
+}
+.logo {
+  width: 100px;
+}
+.auth-modal {
+  height: 90vh;
+}
+.other-actions {
+  margin: 20px 0;
+}

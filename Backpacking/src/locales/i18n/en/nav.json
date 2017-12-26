@@ -1,0 +1,17 @@
+{ 
+  "newsfeed": "news feed",
+  "nearme": "near me",
+  "popular": "popular",
+  "suggestion": "suggestion",
+  "login": "log in",
+  "signup": "sign up",
+  "dropdown": {
+    "account": "account",
+    "support": "support",
+    "information": "information",
+    "checkin": "check-in",
+    "favorites": "favorites",
+    "settings": "settings",
+    "logout": "logout"
+  }
+}

@@ -1,0 +1,19 @@
+.comments-box {
+  padding: 0 1rem;
+  max-height: calc(100% - 17rem);
+  overflow: scroll;
+  .comment-item {
+    overflow: hidden;
+    padding-bottom: 1.5rem;
+    .avatar-user {
+      border-radius: 50%;
+    }
+    .comment-content {
+      float: right;
+      width: calc(100% - 3rem);
+      .comment-text {
+        display: inline;
+      }
+    }
+  }
+}

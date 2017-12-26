@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import GoogleMap from './components/GoogleMap'
+import GoogleMap from './components/google-map'
 import * as types from './store/types'
 import {mapActions, mapGetters} from 'vuex'
 import {loadFbSdk, getFbLoginStatus} from './helper/authFacebook.js'
@@ -37,9 +37,8 @@ export default {
           this.setConnected({status: false})
         }
       })
-    }
-    else if ( provider ==='email') {
-       this.checkLogin()
+    } else if (provider === 'email') {
+      this.checkLogin()
     }
   },
   methods: {
@@ -70,12 +69,6 @@ export default {
   z-index: 5;
 }
 
-
-.gmap-box{
-  width: 100%; 
-  height: 30vh;
-}
-
 .slide-fade-enter-active {
   transition: all .6s ease;
 }
@@ -87,9 +80,6 @@ export default {
 .slide-fade-enter {
   transform: translateY(-2000px);
   opacity: 0;
-}
-h4{
-  margin: 5px;
 }
 
 </style>
